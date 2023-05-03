@@ -103,8 +103,7 @@ After you're finished please remove all the comments and instructions!
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-Comming soon.
-<!-- - [Live Demo Link](https://momo-87.github.io/awesome-books-with-ES6/) -->
+- [Live Demo Link](https://momo-87.github.io/to-do-list/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -184,8 +183,7 @@ Example command:
 --->
 
 ### Deployment
-Coming soon
-<!-- The project is already deployed  at github pages -->
+The project is already deployed  at github pages
 
 <!--
 Example:
