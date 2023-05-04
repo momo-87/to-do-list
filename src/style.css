@@ -64,6 +64,14 @@ body {
   padding-left: 2%;
 }
 
+.error-message {
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+  padding-left: 2%;
+  transition: visibility 5s;
+}
+
 .description-input:focus {
   outline: none;
 }
