@@ -11,9 +11,10 @@ const populateHtmlForEachTask = (tasks) => {
         [tasks[i], tasks[j]] = [tasks[j], tasks[i]];
       }
     }
-    if(tasks[i].description !== '') {
-        // d prefix is used below in front of ${tasks[i].index} to avoid using number as tag class or id
-        taskBox[i].innerHTML = `<div class = "checkBox-and-description-box flex-row">
+    if (tasks[i].description !== '') {
+      /* d prefix is used below in front of ${tasks[i].index}
+      to avoid using number as tag class or id */
+      taskBox[i].innerHTML = `<div class = "checkBox-and-description-box flex-row">
                                   <input class = "check-box" type = "checkBox">
                                   <p class = "d${tasks[i].index} task-description">${tasks[i].description}</p>
                                 </div>

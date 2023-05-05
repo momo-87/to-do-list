@@ -44,7 +44,7 @@ body {
 }
 
 .titleBox i,
-.inputBox i, 
+.inputBox i,
 .task-box i {
   position: absolute;
   color: gray;
