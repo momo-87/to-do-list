@@ -4,25 +4,6 @@ import './style.css';
 // import the function used to populate HTML for each task
 import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
-// Array of tasks
-// const tasks = [
-//   {
-//     description: 'Complete To-Do list project',
-//     completed: false,
-//     index: Date.now().toString(),
-//   },
-//   {
-//     description: 'Complete To-Do list structure',
-//     completed: true,
-//     index: Date.now().toString(),
-//   },
-//   {
-//     description: 'Complete To-Do list: add & remove',
-//     completed: false,
-//     index: Date.now().toString(),
-//   },
-// ];
-
 // Import the tasksList Class
 import TasksList from '../modules/tasksListClass.js';
 
@@ -56,23 +37,16 @@ taskValidation.addEventListener('click', () => {
 // Delete task by clicking on the trash icon
 const toDoListBox = document.querySelector('.to-do-list-box');
 toDoListBox.addEventListener('click', (e) => {
-  if (e.target && e.target.matches('p')) {
-    /* Store the task description paragraph class in targetClassList
-    array with d${tasks[i].index} being targetClassList[0] */
-    const targetClassList = e.target.classList;
-    // Make the three dots container invisible
-    document.querySelector(`div.${targetClassList[0]}`).style.visibility = 'hidden';
-    /* Make the trash icon visible because the visibility
-    property is set to hidden by default in the css file */
-    document.getElementById(`${targetClassList[0]}`).style.visibility = 'visible';
+  if (e.target && e.target.matches('i.trash')) {
+    const index = Number(e.target.id.replace('d', ''));
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.deleteTask(index));
+  }
 
-    document.getElementById(`${targetClassList[0]}`).addEventListener('click', () => {
-      // tasks.deleteTask()
-      document.querySelectorAll('.task-box').forEach((e) => e.remove());
-      populateHtmlForEachTask(tasks.deleteTask(Number(targetClassList[0].replace('d', ''))));
-    });
-    // document.querySelectorAll('.task-box').forEach(e => e.remove());
-    // tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  // Focus on description paragraph by clicking on edit button
+  if (e.target && e.target.matches('i.edit')) {
+    const targetClassList = e.target.classList;
+    document.querySelector(`p.${targetClassList[0]}`).focus();
   }
 });
 

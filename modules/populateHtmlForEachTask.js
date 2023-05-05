@@ -18,8 +18,9 @@ const populateHtmlForEachTask = (tasks) => {
                                   <input class = "check-box" type = "checkBox">
                                   <p class = "d${tasks[i].index} task-description">${tasks[i].description}</p>
                                 </div>
-                                <div class = "d${tasks[i].index} dots-box flex-column"><span class = "dot"></span><span class = "dot"></span><span class = "dot"></span></div>
-                                <i id = "d${tasks[i].index}" class="fa-regular fa-trash-can"></i>
+                                <div class = "d${tasks[i].index} show-dots dots-box flex-column"><span class = "dot"></span><span class = "dot"></span><span class = "dot"></span></div>
+                                <i class="d${tasks[i].index}  fa-regular fa-pen-to-square edit"></i>
+                                <i id = "d${tasks[i].index}" class="fa-regular fa-trash-can trash"></i>
                                 `;
       toDoListBox.appendChild(taskBox[i]);
     }

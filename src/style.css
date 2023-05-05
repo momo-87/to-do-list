@@ -43,9 +43,7 @@ body {
   position: relative;
 }
 
-.titleBox i,
-.inputBox i,
-.task-box i {
+i {
   position: absolute;
   color: gray;
   right: 3%;
@@ -53,13 +51,21 @@ body {
   font-size: 15px;
 }
 
-.task-box i {
-  visibility: hidden;
+.titleBox i,
+.inputBox i {
+  right: 3%;
 }
 
-.titleBox i:hover,
-.inputBox i:hover {
+i:hover {
   cursor: pointer;
+}
+
+i.trash {
+  right: 7%;
+}
+
+i.edit {
+  right: 12%;
 }
 
 .description-input {
@@ -104,7 +110,7 @@ body {
 }
 
 .task-description {
-  width: 95%;
+  width: 75%;
   height: 40px;
   margin: 0;
   padding: 10px 0;
