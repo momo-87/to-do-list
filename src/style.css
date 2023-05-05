@@ -38,17 +38,23 @@ body {
 }
 
 .titleBox,
-.inputBox {
+.inputBox,
+.task-box {
   position: relative;
 }
 
 .titleBox i,
-.inputBox i {
+.inputBox i, 
+.task-box i {
   position: absolute;
   color: gray;
   right: 3%;
   top: 12px;
   font-size: 15px;
+}
+
+.task-box i {
+  visibility: hidden;
 }
 
 .titleBox i:hover,
@@ -86,7 +92,7 @@ body {
   justify-content: space-between;
 }
 
-.task-box:focus {
+.task-box:focus-within {
   outline: none;
   background-color: #e4e3ae;
 }
@@ -94,6 +100,18 @@ body {
 .checkBox-and-description-box {
   padding-left: 2%;
   gap: 0.5rem;
+  width: 95%;
+}
+
+.task-description {
+  width: 95%;
+  height: 40px;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.task-description:focus {
+  outline: none;
 }
 
 .check-box:hover {

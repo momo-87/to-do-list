@@ -5,7 +5,6 @@ const populateHtmlForEachTask = (tasks) => {
   for (let i = 0; i < tasks.length; i += 1) {
     taskBox[i] = document.createElement('div');
     taskBox[i].classList.add('flex-row', 'task-box');
-    taskBox[i].contentEditable = true;
     for (let j = i; j < tasks.length; j += 1) {
       if (tasks[j].index < tasks[i].index) {
         // variables swapped in one destructuring assignment
@@ -13,14 +12,18 @@ const populateHtmlForEachTask = (tasks) => {
       }
     }
     if(tasks[i].description !== '') {
+        // d prefix is used below in front of ${tasks[i].index} to avoid using number as tag class or id
         taskBox[i].innerHTML = `<div class = "checkBox-and-description-box flex-row">
                                   <input class = "check-box" type = "checkBox">
-                                  <p class = "task-description">${tasks[i].description}</p>
+                                  <p class = "d${tasks[i].index} task-description">${tasks[i].description}</p>
                                 </div>
-                                <div class = "dots-box flex-column"><span class = "dot"></span><span class = "dot"></span><span class = "dot"></span></div>
+                                <div class = "d${tasks[i].index} dots-box flex-column"><span class = "dot"></span><span class = "dot"></span><span class = "dot"></span></div>
+                                <i id = "d${tasks[i].index}" class="fa-regular fa-trash-can"></i>
                                 `;
       toDoListBox.appendChild(taskBox[i]);
     }
+    // Set the task description paragraph content to editable for each task
+    document.querySelector(`.d${tasks[i].index}`).contentEditable = true;
   }
 };
 export default populateHtmlForEachTask;

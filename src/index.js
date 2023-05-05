@@ -28,7 +28,7 @@ import TasksList from '../modules/tasksListClass.js';
 const tasks = new TasksList();
 
 // Call the populateHtmlForEachTask function to populate the HTML list item element for each task in the local storage
-const storedTasks = JSON.parse(localStorage.getItem('storedtasks')) || [];
+const storedTasks = JSON.parse(localStorage.getItem('storedTasks')) || [];
 populateHtmlForEachTask(storedTasks);
 
 
@@ -36,6 +36,8 @@ populateHtmlForEachTask(storedTasks);
 
 const taskDescription = document.querySelector('#taskDescription');
 const taskValidation = document.querySelector('#taskValidation');
+
+// Add task by clicking on the return icon of the input field
 taskValidation.addEventListener('click', () => {
   let addedTask = {};
   // let tasksList = [];
@@ -51,4 +53,23 @@ taskValidation.addEventListener('click', () => {
     populateHtmlForEachTask(tasks.addTask(addedTask));
   }
   taskDescription.value ='';
-})
+});
+
+// Delete task by clicking on the trash icon
+const toDoListBox = document.querySelector('.to-do-list-box');
+toDoListBox.addEventListener('click', (e) => {
+  if(e.target && e.target.matches('p')) {
+    // Store the task description paragraph class in targetClassList array with d${tasks[i].index} being targetClassList[0] 
+    const targetClassList = e.target.classList;
+    // Make the three dots container invisible
+    document.querySelector(`div.${targetClassList[0]}`).style.visibility = 'hidden';
+    // Make the trash icon visible because the visibility property is set to hidden by default in the css file
+    document.getElementById(`${targetClassList[0]}`).style.visibility = 'visible';
+
+    document.getElementById(`${targetClassList[0]}`).addEventListener('click', () => {
+      // tasks.deleteTask()
+      document.querySelectorAll('.task-box').forEach(e => e.remove());
+      populateHtmlForEachTask(tasks.deleteTask(Number(targetClassList[0].replace('d', ''))));
+    });
+ }
+});
