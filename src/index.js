@@ -40,7 +40,6 @@ const taskValidation = document.querySelector('#taskValidation');
 // Add task by clicking on the return icon of the input field
 taskValidation.addEventListener('click', () => {
   let addedTask = {};
-  // let tasksList = [];
   if(taskDescription.value === '') {
     document.querySelector('.error-message').textContent = "Please, the task's description is required";
   }
@@ -71,5 +70,15 @@ toDoListBox.addEventListener('click', (e) => {
       document.querySelectorAll('.task-box').forEach(e => e.remove());
       populateHtmlForEachTask(tasks.deleteTask(Number(targetClassList[0].replace('d', ''))));
     });
- }
+    // document.querySelectorAll('.task-box').forEach(e => e.remove());
+    // tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  }
+});
+
+toDoListBox.addEventListener('input', (e) => {
+  if(e.target && e.target.matches('p')) {
+    // Store the task description paragraph class in targetClassList array with d${tasks[i].index} being targetClassList[0] 
+    const targetClassList = e.target.classList;
+    tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  }
 });

@@ -28,4 +28,11 @@ export default class TasksList {
         localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
         return this.tasks
     }
+    // Writing the editTask method
+    editTask = (taskIndex) => {
+        const editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
+        this.tasks[taskIndex-1].description = editedTask;
+        localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+        // return this.tasks;
+    }
 }
