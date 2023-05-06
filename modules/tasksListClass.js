@@ -47,4 +47,16 @@ export default class TasksList {
         localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
       }
     }
+
+    // Write the Change task status method
+    changeTaskStatus = (taskIndex) => {
+      if (!this.tasks[taskIndex - 1].completed) {
+        this.tasks[taskIndex - 1].completed = true;
+        document.querySelector(`p.d${taskIndex}`).style.textDecoration = 'line-through';
+      } else if (this.tasks[taskIndex - 1].completed) {
+        this.tasks[taskIndex - 1].completed = false;
+        document.querySelector(`p.d${taskIndex}`).style.textDecoration = 'none';
+      }
+      localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+    }
 }

@@ -48,8 +48,15 @@ toDoListBox.addEventListener('click', (e) => {
     const targetClassList = e.target.classList;
     document.querySelector(`p.${targetClassList[0]}`).focus();
   }
+
+  // Change the task status by clicking on the check box
+  if (e.target && e.target.matches('input.check-box')) {
+    const targetClassList = e.target.classList;
+    tasks.changeTaskStatus(Number(targetClassList[0].replace('checkBox', '')));
+  }
 });
 
+// Edit task by change the innerHTML
 toDoListBox.addEventListener('input', (e) => {
   if (e.target && e.target.matches('p')) {
     /* Store the task description paragraph class in targetClassList
