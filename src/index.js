@@ -1,50 +1,60 @@
-// import _ from 'lodash';
+// import style from style.css file (required)
 import './style.css';
 
-// Array of tasks
-const tasks = [
-  {
-    description: 'Complete To-Do list project',
-    completed: false,
-    index: Date.now().toString(),
-  },
-  {
-    description: 'Complete To-Do list structure',
-    completed: true,
-    index: Date.now().toString(),
-  },
-  {
-    description: 'Complete To-Do list: add & remove',
-    completed: false,
-    index: Date.now().toString(),
-  },
-];
+// import the function used to populate HTML for each task
+import populateHtmlForEachTask from '../modules/populateHtmlForEachTask.js';
 
-// Select the to-do list placeholder div
-const toDoListBox = document.querySelector('.to-do-list-box');
+// Import the tasksList Class
+import TasksList from '../modules/tasksListClass.js';
 
-// A function to iterate over the tasks array and populate an HTML list item element for each task
-const populateHtmlForEachTask = () => {
-  const taskBox = [];
-  for (let i = 0; i < tasks.length; i += 1) {
-    taskBox[i] = document.createElement('div');
-    taskBox[i].classList.add('flex-row', 'task-box');
-    taskBox[i].contentEditable = true;
-    for (let j = i; j < tasks.length; j += 1) {
-      if (tasks[j].index < tasks[i].index) {
-        // variables swapped in one destructuring assignment
-        [tasks[i], tasks[j]] = [tasks[j], tasks[i]];
-      }
-      taskBox[i].innerHTML = `<div class = "checkBox-and-description-box flex-row">
-                                        <input class = "check-box" type = "checkBox">
-                                        <p class = "task-description">${tasks[i].description}</p>
-                                     </div>
-                                    <div class = "dots-box flex-column"><span class = "dot"></span><span class = "dot"></span><span class = "dot"></span></div>
-                                     `;
-    }
-    toDoListBox.appendChild(taskBox[i]);
+const tasks = new TasksList();
+
+/* Call the populateHtmlForEachTask function to populate
+the HTML list item element for each task in the local storage */
+const storedTasks = JSON.parse(localStorage.getItem('storedTasks')) || [];
+populateHtmlForEachTask(storedTasks);
+
+const taskDescription = document.querySelector('#taskDescription');
+const taskValidation = document.querySelector('#taskValidation');
+
+// Add task by clicking on the return icon of the input field
+taskValidation.addEventListener('click', () => {
+  let addedTask = {};
+  if (taskDescription.value === '') {
+    document.querySelector('.error-message').textContent = "Please, the task's description is required";
   }
-};
+  if (taskDescription.value !== '') {
+    // Remove the error message when a task is validated
+    document.querySelector('.error-message').textContent = '';
+    addedTask = { description: taskDescription.value };
+    // Remove previous task-box from the DOM
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.addTask(addedTask));
+  }
+  taskDescription.value = '';
+});
 
-// Call the populateHtmlForEachTask function to populate the HTML list item element for each task
-populateHtmlForEachTask();
+// Delete task by clicking on the trash icon
+const toDoListBox = document.querySelector('.to-do-list-box');
+toDoListBox.addEventListener('click', (e) => {
+  if (e.target && e.target.matches('i.trash')) {
+    const index = Number(e.target.id.replace('d', ''));
+    document.querySelectorAll('.task-box').forEach((e) => e.remove());
+    populateHtmlForEachTask(tasks.deleteTask(index));
+  }
+
+  // Focus on description paragraph by clicking on edit button
+  if (e.target && e.target.matches('i.edit')) {
+    const targetClassList = e.target.classList;
+    document.querySelector(`p.${targetClassList[0]}`).focus();
+  }
+});
+
+toDoListBox.addEventListener('input', (e) => {
+  if (e.target && e.target.matches('p')) {
+    /* Store the task description paragraph class in targetClassList
+    array with d${tasks[i].index} being targetClassList[0] */
+    const targetClassList = e.target.classList;
+    tasks.editTask(Number(targetClassList[0].replace('d', '')));
+  }
+});

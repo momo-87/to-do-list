@@ -38,12 +38,12 @@ body {
 }
 
 .titleBox,
-.inputBox {
+.inputBox,
+.task-box {
   position: relative;
 }
 
-.titleBox i,
-.inputBox i {
+i {
   position: absolute;
   color: gray;
   right: 3%;
@@ -51,9 +51,21 @@ body {
   font-size: 15px;
 }
 
-.titleBox i:hover,
-.inputBox i:hover {
+.titleBox i,
+.inputBox i {
+  right: 3%;
+}
+
+i:hover {
   cursor: pointer;
+}
+
+i.trash {
+  right: 7%;
+}
+
+i.edit {
+  right: 12%;
 }
 
 .description-input {
@@ -62,6 +74,14 @@ body {
   border: none;
   border-bottom: 1px solid #888;
   padding-left: 2%;
+}
+
+.error-message {
+  margin: 0;
+  color: red;
+  font-size: 0.8rem;
+  padding-left: 2%;
+  transition: visibility 5s;
 }
 
 .description-input:focus {
@@ -78,7 +98,7 @@ body {
   justify-content: space-between;
 }
 
-.task-box:focus {
+.task-box:focus-within {
   outline: none;
   background-color: #e4e3ae;
 }
@@ -86,6 +106,18 @@ body {
 .checkBox-and-description-box {
   padding-left: 2%;
   gap: 0.5rem;
+  width: 95%;
+}
+
+.task-description {
+  width: 75%;
+  height: 40px;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.task-description:focus {
+  outline: none;
 }
 
 .check-box:hover {
