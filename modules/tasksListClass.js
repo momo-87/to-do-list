@@ -37,9 +37,14 @@ export default class TasksList {
 
     // Writing the editTask method
     editTask = (taskIndex) => {
-      const editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
-      this.tasks[taskIndex - 1].description = editedTask;
-      localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
-      // return this.tasks;
+      let editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
+      // If the task description is erased, set the description to empty task
+      if (editedTask === '') {
+        editedTask = 'Empty task';
+      }
+      if (editedTask !== '') {
+        this.tasks[taskIndex - 1].description = editedTask;
+        localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+      }
     }
 }
