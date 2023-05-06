@@ -37,9 +37,36 @@ export default class TasksList {
 
     // Writing the editTask method
     editTask = (taskIndex) => {
-      const editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
-      this.tasks[taskIndex - 1].description = editedTask;
+      let editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
+      // If the task description is erased, set the description to empty task
+      if (editedTask === '') {
+        editedTask = 'Empty task';
+      }
+      if (editedTask !== '') {
+        this.tasks[taskIndex - 1].description = editedTask;
+        localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+      }
+    }
+
+    // Write the Change task status method
+    changeTaskStatus = (taskIndex) => {
+      if (!this.tasks[taskIndex - 1].completed) {
+        this.tasks[taskIndex - 1].completed = true;
+        document.querySelector(`p.d${taskIndex}`).style.textDecoration = 'line-through';
+      } else if (this.tasks[taskIndex - 1].completed) {
+        this.tasks[taskIndex - 1].completed = false;
+        document.querySelector(`p.d${taskIndex}`).style.textDecoration = 'none';
+      }
       localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
-      // return this.tasks;
+    }
+
+    clearAllCompleted = () => {
+      this.tasks = this.tasks.filter((task) => task.completed === false);
+      // rearrange task index after clearing
+      for (let i = 0; i < this.tasks.length; i += 1) {
+        this.tasks[i].index = i + 1;
+      }
+      localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+      return this.tasks;
     }
 }
