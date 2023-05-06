@@ -59,4 +59,14 @@ export default class TasksList {
       }
       localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
     }
+
+    clearAllCompleted = () => {
+      this.tasks = this.tasks.filter((task) => task.completed === false);
+      // rearrange task index after clearing
+      for (let i = 0; i < this.tasks.length; i += 1) {
+        this.tasks[i].index = i + 1;
+      }
+      localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
+      return this.tasks;
+    }
 }

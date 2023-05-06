@@ -65,3 +65,9 @@ toDoListBox.addEventListener('input', (e) => {
     tasks.editTask(Number(targetClassList[0].replace('d', '')));
   }
 });
+
+document.querySelector('.clear-all-completed').addEventListener('click', () => {
+  tasks.clearAllCompleted();
+  document.querySelectorAll('.task-box').forEach((e) => e.remove());
+  populateHtmlForEachTask(tasks.clearAllCompleted());
+});
