@@ -70,10 +70,10 @@ After you're finished please remove all the comments and instructions!
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JAVASCRIPT</a></li>
-    <li><a href="#">Webpack</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JAVASCRIPT</a></li>
+    <li><a href="https://webpack.js.org/concepts/">Webpack</a></li>
   </ul>
 </details>
 
