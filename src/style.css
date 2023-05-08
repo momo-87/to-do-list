@@ -84,29 +84,10 @@ i.edit {
   transition: visibility 5s;
 }
 
-.description-input:focus {
-  outline: none;
-}
-
-.description-input::placeholder {
-  font-style: italic;
-}
-
 .task-box {
   border-bottom: 1px solid #888;
   align-items: center;
   justify-content: space-between;
-}
-
-.task-box:focus-within {
-  outline: none;
-  background-color: #e4e3ae;
-}
-
-.checkBox-and-description-box {
-  padding-left: 2%;
-  gap: 0.5rem;
-  width: 95%;
 }
 
 .task-description {
@@ -116,8 +97,24 @@ i.edit {
   padding: 10px 0;
 }
 
-.task-description:focus {
+.description-input:focus,
+.task-description:focus,
+.task-box:focus-within {
   outline: none;
+}
+
+.description-input::placeholder {
+  font-style: italic;
+}
+
+.task-box:focus-within {
+  background-color: #e4e3ae;
+}
+
+.checkBox-and-description-box {
+  padding-left: 2%;
+  gap: 0.5rem;
+  width: 95%;
 }
 
 .check-box:hover {
