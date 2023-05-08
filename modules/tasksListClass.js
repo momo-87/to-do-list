@@ -1,5 +1,3 @@
-// import task class
-// import task from './taskClass.js';
 // Create and export a tasks list class which is an array of objects
 export default class TasksList {
   constructor() {
@@ -37,15 +35,10 @@ export default class TasksList {
 
     // Writing the editTask method
     editTask = (taskIndex) => {
-      let editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
+      const editedTask = document.querySelector(`.d${taskIndex}`).innerHTML;
       // If the task description is erased, set the description to empty task
-      if (editedTask === '') {
-        editedTask = 'Empty task';
-      }
-      if (editedTask !== '') {
-        this.tasks[taskIndex - 1].description = editedTask;
-        localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
-      }
+      this.tasks[taskIndex - 1].description = (editedTask || 'Empty task');
+      localStorage.setItem('storedTasks', JSON.stringify(this.tasks));
     }
 
     // Write the Change task status method
