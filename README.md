@@ -32,6 +32,9 @@ After you're finished please remove all the comments and instructions!
 <div align="center">
   <h3><b>To-Do-List Web Application</b></h3>
 </div>
+<div align="center">
+  <img src="./assets/card4.png" alt="screenshot" />
+</div>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -58,10 +61,10 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [AWSOME BOOKS] <a name="about-project"></a>
+# 📖 [To-DO list App] <a name="about-project"></a>
 
 
-**[AWSOME BOOKS]** is a static web page to Collect and display all your favourite books.
+**[To-Do list app]** is a simple application to create and display a fully editable To-Do list. The user can change the status of a task to completed by clicking on the corresponding check-box. Build with JavaScript.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -70,10 +73,10 @@ After you're finished please remove all the comments and instructions!
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JAVASCRIPT</a></li>
     <li><a href="https://webpack.js.org/concepts/">Webpack</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
   </ul>
 </details>
 
@@ -95,8 +98,11 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-- **[Adding new book]**
-- **[Delete a specific book]**
+- **[Adding new task]**
+- **[Editing task]**
+- **[Changing Task status]**
+- **[Deleting task]**
+- **[Clear All completed tasks]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -217,8 +223,10 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Add some animation]**
-- [ ] **[Add download option]**
+- [ ] **[Sorting task by priority]**
+- [ ] **[Sorting task by due date]**
+- [ ] **[Setting reminder for task]**
+- [ ] **[Syncing the task list across multiple devices]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
